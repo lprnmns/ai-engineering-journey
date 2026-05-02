@@ -53,3 +53,8 @@ git config core.hooksPath .githooks
 
 - `toolbox/`: shell scripts and CLI notes
 - `labs/lin_alg/vec.py`: pure Python vector operations and cosine similarity
+
+### Debugging and Profiling
+
+- `labs/lin_alg/vec.py` includes basic logging and a small cosine similarity benchmark.
+- `labs/lin_alg/debug_examples.py` demonstrates handled vector input errors.

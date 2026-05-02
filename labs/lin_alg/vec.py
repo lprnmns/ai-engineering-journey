@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import logging
+import time
 from math import sqrt
 from typing import Sequence
 
@@ -7,9 +9,18 @@ from typing import Sequence
 Vector = Sequence[float]
 
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(levelname)s:%(name)s:%(message)s",
+)
+
+logger = logging.getLogger(__name__)
+
+
 def dot(a: Vector, b: Vector) -> float:
     """Return the dot product of two vectors."""
     if len(a) != len(b):
+        logger.error("Vector length mismatch: len(a)=%s, len(b)=%s", len(a), len(b))
         raise ValueError("Vectors must have the same length.")
 
     return sum(x * y for x, y in zip(a, b))
@@ -26,13 +37,36 @@ def cosine_similarity(a: Vector, b: Vector) -> float:
     norm_b = norm(b)
 
     if norm_a == 0 or norm_b == 0:
+        logger.error("Zero vector detected: norm_a=%s, norm_b=%s", norm_a, norm_b)
         raise ValueError("Cosine similarity is undefined for zero vectors.")
 
-    return dot(a, b) / (norm_a * norm_b)
+    similarity = dot(a, b) / (norm_a * norm_b)
+
+    logger.debug("cosine_similarity=%s", similarity)
+
+    return similarity
 
 
 def _almost_equal(x: float, y: float, tolerance: float = 1e-9) -> bool:
     return abs(x - y) < tolerance
+
+
+def benchmark_cosine_similarity(iterations: int = 100_000) -> float:
+    """Run a tiny benchmark for cosine similarity."""
+    query = [0.2, 0.8, 0.1]
+    doc = [0.3, 0.7, 0.2]
+
+    start = time.perf_counter()
+
+    for _ in range(iterations):
+        cosine_similarity(query, doc)
+
+    end = time.perf_counter()
+
+    duration = end - start
+    logger.info("benchmark iterations=%s duration=%.6fs", iterations, duration)
+
+    return duration
 
 
 def run_self_tests() -> None:
@@ -68,3 +102,5 @@ if __name__ == "__main__":
 
     print("query vs doc_a:", cosine_similarity(query, doc_a))
     print("query vs doc_b:", cosine_similarity(query, doc_b))
+
+    benchmark_cosine_similarity()
