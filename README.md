@@ -39,3 +39,17 @@ Each day follows this structure:
 
 This is not a passive course repo.
 Every folder should contain proof of work: scripts, notebooks, tests, reports, demos, or deployment artifacts.
+
+## Local Git Hooks
+
+This repository includes Git hooks under `.githooks`.
+
+After cloning the repository, enable hooks with:
+
+```bash
+git config core.hooksPath .githooks
+
+## Current Artifacts
+
+- `toolbox/`: shell scripts and CLI notes
+- `labs/lin_alg/vec.py`: pure Python vector operations and cosine similarity
