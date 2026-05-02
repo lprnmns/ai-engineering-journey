@@ -48,13 +48,35 @@ After cloning the repository, enable hooks with:
 
 ```bash
 git config core.hooksPath .githooks
+```
+
+The current hook validates commit messages using the Conventional Commits format:
+
+```text
+type(scope): short description
+```
+
+Example:
+
+```text
+docs(repo): add contributing guide
+```
 
 ## Current Artifacts
 
 - `toolbox/`: shell scripts and CLI notes
 - `labs/lin_alg/vec.py`: pure Python vector operations and cosine similarity
+- `labs/lin_alg/text_similarity.py`: word-count based text similarity demo
+- `labs/lin_alg/debug_examples.py`: handled debugging examples
 
-### Debugging and Profiling
+## Weekly Summaries
 
-- `labs/lin_alg/vec.py` includes basic logging and a small cosine similarity benchmark.
-- `labs/lin_alg/debug_examples.py` demonstrates handled vector input errors.
+- [Week 1 — Foundations](docs/week1_summary.md)
+
+## Useful Commands
+
+Run Week 1 checks:
+
+```bash
+./toolbox/scripts/run_week1_checks.sh
+```

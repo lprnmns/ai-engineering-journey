@@ -1,11 +1,12 @@
 # CLI Cheatsheet
 
 ## ls
+
 Dosya ve klasörleri listeler.
 
-Example:
 ```bash
 ls -la
+```
 
 ## pwd
 
@@ -13,5 +14,42 @@ ls -la
 
 ```bash
 pwd
+```
 
+## grep
+
+Metin içinde arama yapar.
+
+```bash
+grep -n "TODO" -R .
+```
+
+## find
+
+Dosya veya klasör arar.
+
+```bash
+find . -name "*.py"
+```
+
+## cat
+
+Dosya içeriğini terminale basar.
+
+```bash
+cat README.md
+```
+
+## pipe |
+
+Bir komutun çıktısını başka komuta aktarır.
+
+```bash
+grep "ERROR" app.log
+```
+
+Not: Aşağıdaki kullanım da çalışır ama çoğu durumda gereksizdir:
+
+```bash
+cat app.log | grep "ERROR"
 ```
