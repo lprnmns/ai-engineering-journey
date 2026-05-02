@@ -37,5 +37,5 @@ Each day follows this structure:
 
 ## Repository Philosophy
 
-This is not a passive course repo.  
+This is not a passive course repo.
 Every folder should contain proof of work: scripts, notebooks, tests, reports, demos, or deployment artifacts.
