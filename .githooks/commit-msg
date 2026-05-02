@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+commit_msg_file="$1"
+commit_msg="$(head -n 1 "$commit_msg_file")"
+
+pattern='^(feat|fix|docs|style|refactor|test|chore|ci|build|perf|revert)(\([a-z0-9._-]+\))?: .{1,72}$'
+
+if [[ ! "$commit_msg" =~ $pattern ]]; then
+  echo "Invalid commit message:"
+  echo "  $commit_msg"
+  echo
+  echo "Expected format:"
+  echo "  type(scope): short description"
+  echo
+  echo "Examples:"
+  echo "  feat(rag): add chunking pipeline"
+  echo "  fix(api): handle empty query"
+  echo "  docs(readme): add setup guide"
+  echo
+  echo "Allowed types:"
+  echo "  feat, fix, docs, style, refactor, test, chore, ci, build, perf, revert"
+  exit 1
+fi
