@@ -95,3 +95,8 @@ Run Week 1 checks:
 
 - `tests/test_domain.py` covers Artifact, Milestone, and DailyLog behavior.
 - `pytest` is used for automated unit tests.
+
+### Matrix Multiplication
+
+- `labs/lin_alg/matrix.py` implements pure Python matrix multiplication.
+- `labs/lin_alg/matrix_benchmark.py` compares pure Python matrix multiplication with NumPy.
