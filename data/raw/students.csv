@@ -1,0 +1,8 @@
+name,age,study_hours,previous_score,passed
+Ali,21,5.5,72,true
+Zeynep,22,7.0,85,true
+Mehmet,20,,60,false
+Ayse,23,3.5,55,false
+Can,21,8.0,90,true
+Deniz,,4.0,68,true
+Ece,22,2.0,45,false
