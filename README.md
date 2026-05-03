@@ -115,3 +115,8 @@ Run Week 1 checks:
 
 - `labs/data/clean_students.py` fills missing student data and writes a cleaned CSV.
 - `data/processed/students_clean.csv` is generated from the raw student dataset.
+
+### SQL Basics
+
+- `labs/data/sql_basics.py` writes the cleaned student dataset to SQLite.
+- SQL examples cover SELECT, WHERE, ORDER BY, LIMIT, and GROUP BY.
