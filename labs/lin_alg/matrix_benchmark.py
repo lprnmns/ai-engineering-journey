@@ -1,5 +1,6 @@
 import random
 import time
+from typing import Any
 
 import numpy as np
 
@@ -22,8 +23,8 @@ def benchmark_pure_python(left: Matrix, right: Matrix) -> float:
 
 
 def benchmark_numpy(left: Matrix, right: Matrix) -> float:
-    left_array = np.array(left)
-    right_array = np.array(right)
+    left_array: Any = np.array(left)
+    right_array: Any = np.array(right)
 
     start = time.perf_counter()
     left_array @ right_array
