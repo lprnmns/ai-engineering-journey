@@ -80,3 +80,8 @@ Run Week 1 checks:
 ```bash
 ./toolbox/scripts/run_week1_checks.sh
 ```
+
+### Type Checking
+
+- `pyproject.toml` configures mypy in strict mode.
+- `examples/w2d2_type_check_demo.py` demonstrates typed DailyLog usage.
