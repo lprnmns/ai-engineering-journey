@@ -90,3 +90,8 @@ Run Week 1 checks:
 
 - `pyproject.toml` configures mypy in strict mode.
 - `examples/w2d2_type_check_demo.py` demonstrates typed DailyLog usage.
+
+### Testing
+
+- `tests/test_domain.py` covers Artifact, Milestone, and DailyLog behavior.
+- `pytest` is used for automated unit tests.
