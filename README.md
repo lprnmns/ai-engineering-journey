@@ -105,3 +105,8 @@ Run Week 1 checks:
 
 - `labs/lin_alg/matrix.py` implements pure Python matrix multiplication.
 - `labs/lin_alg/matrix_benchmark.py` compares pure Python matrix multiplication with NumPy.
+
+### Pandas Basics
+
+- `data/raw/students.csv` is a small toy dataset for EDA practice.
+- `labs/data/pandas_basics.py` demonstrates loading CSV data, checking missing values, and simple groupby analysis.
