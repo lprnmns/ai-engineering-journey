@@ -2,9 +2,14 @@
 
 import re
 from collections import Counter
+from pathlib import Path
+import sys
 from typing import Dict, List, Tuple
 
-from vec import cosine_similarity
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(PROJECT_ROOT))
+
+from labs.lin_alg.vec import cosine_similarity
 
 
 def tokenize(text: str) -> List[str]:

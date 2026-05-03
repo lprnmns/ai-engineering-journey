@@ -1,8 +1,13 @@
 import random
 import time
+from pathlib import Path
+import sys
 from typing import Any
 
 import numpy as np
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(PROJECT_ROOT))
 
 from labs.lin_alg.matrix import Matrix, matmul
 
