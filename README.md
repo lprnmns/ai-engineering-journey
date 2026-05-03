@@ -110,3 +110,8 @@ Run Week 1 checks:
 
 - `data/raw/students.csv` is a small toy dataset for EDA practice.
 - `labs/data/pandas_basics.py` demonstrates loading CSV data, checking missing values, and simple groupby analysis.
+
+### Data Cleaning
+
+- `labs/data/clean_students.py` fills missing student data and writes a cleaned CSV.
+- `data/processed/students_clean.csv` is generated from the raw student dataset.
