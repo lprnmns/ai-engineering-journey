@@ -100,3 +100,8 @@ Run Week 1 checks:
 
 - `labs/lin_alg/matrix.py` implements pure Python matrix multiplication.
 - `labs/lin_alg/matrix_benchmark.py` compares pure Python matrix multiplication with NumPy.
+
+### Matrix Multiplication
+
+- `labs/lin_alg/matrix.py` implements pure Python matrix multiplication.
+- `labs/lin_alg/matrix_benchmark.py` compares pure Python matrix multiplication with NumPy.
