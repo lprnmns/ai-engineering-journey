@@ -1,7 +1,8 @@
 from dataclasses import dataclass, field
 from datetime import date
 from enum import Enum
-from typing import List
+
+from src.journey.validation import ensure_non_empty, ensure_non_negative
 
 
 class ArtifactType(str, Enum):
@@ -19,11 +20,8 @@ class Artifact:
     artifact_type: ArtifactType
 
     def __post_init__(self) -> None:
-        if not self.title.strip():
-            raise ValueError("Artifact title cannot be empty.")
-
-        if not self.url.strip():
-            raise ValueError("Artifact URL cannot be empty.")
+        ensure_non_empty(self.title, "Artifact title")
+        ensure_non_empty(self.url, "Artifact URL")
 
     def summary(self) -> str:
         return f"[{self.artifact_type.value}] {self.title}: {self.url}"
@@ -37,14 +35,9 @@ class Milestone:
     is_completed: bool = False
 
     def __post_init__(self) -> None:
-        if not self.code.strip():
-            raise ValueError("Milestone code cannot be empty.")
-
-        if not self.title.strip():
-            raise ValueError("Milestone title cannot be empty.")
-
-        if not self.goal.strip():
-            raise ValueError("Milestone goal cannot be empty.")
+        ensure_non_empty(self.code, "Milestone code")
+        ensure_non_empty(self.title, "Milestone title")
+        ensure_non_empty(self.goal, "Milestone goal")
 
     def mark_completed(self) -> None:
         self.is_completed = True
@@ -60,28 +53,21 @@ class Milestone:
 class DailyLog:
     title: str
     log_date: date
-    watched_or_learned: List[str] = field(default_factory=list)
-    completed_tasks: List[str] = field(default_factory=list)
-    artifacts: List[Artifact] = field(default_factory=list)
+    watched_or_learned: list[str] = field(default_factory=list)
+    completed_tasks: list[str] = field(default_factory=list)
+    artifacts: list[Artifact] = field(default_factory=list)
     hours_spent: float = 0.0
 
     def __post_init__(self) -> None:
-        if not self.title.strip():
-            raise ValueError("Daily log title cannot be empty.")
-
-        if self.hours_spent < 0:
-            raise ValueError("Hours spent cannot be negative.")
+        ensure_non_empty(self.title, "Daily log title")
+        ensure_non_negative(self.hours_spent, "Hours spent")
 
     def add_learned_item(self, item: str) -> None:
-        if not item.strip():
-            raise ValueError("Learned item cannot be empty.")
-
+        ensure_non_empty(item, "Learned item")
         self.watched_or_learned.append(item)
 
     def add_completed_task(self, task: str) -> None:
-        if not task.strip():
-            raise ValueError("Completed task cannot be empty.")
-
+        ensure_non_empty(task, "Completed task")
         self.completed_tasks.append(task)
 
     def add_artifact(self, artifact: Artifact) -> None:

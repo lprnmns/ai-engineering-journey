@@ -95,3 +95,25 @@ def test_daily_log_summary_counts_tasks_and_artifacts() -> None:
         "artifacts=1 | "
         "hours=2.0"
     )
+
+
+def test_daily_log_rejects_empty_learned_item() -> None:
+    log = DailyLog(
+        title="W2D4 — refactor",
+        log_date=date(2026, 5, 3),
+        hours_spent=1.0,
+    )
+
+    with pytest.raises(ValueError, match="Learned item cannot be empty"):
+        log.add_learned_item(" ")
+
+
+def test_daily_log_rejects_empty_completed_task() -> None:
+    log = DailyLog(
+        title="W2D4 — refactor",
+        log_date=date(2026, 5, 3),
+        hours_spent=1.0,
+    )
+
+    with pytest.raises(ValueError, match="Completed task cannot be empty"):
+        log.add_completed_task(" ")
