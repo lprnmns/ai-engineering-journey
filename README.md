@@ -120,3 +120,8 @@ Run Week 1 checks:
 
 - `labs/data/sql_basics.py` writes the cleaned student dataset to SQLite.
 - SQL examples cover SELECT, WHERE, ORDER BY, LIMIT, and GROUP BY.
+
+### EDA Report
+
+- `labs/data/eda_report.py` generates a Markdown EDA report from the cleaned student dataset.
+- `docs/w3_eda_report.md` summarizes missing values, target distribution, group statistics, and modeling readiness.
