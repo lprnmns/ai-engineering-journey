@@ -132,3 +132,8 @@ Run Week 1 checks:
 - `labs/data/build_features.py` splits the cleaned student dataset into features and target.
 - The generated files under `data/processed/` are ready for a baseline classification model.
 
+
+### Baseline ML Classifier
+
+- `labs/ml/train_baseline_classifier.py` trains a Logistic Regression baseline model.
+- `docs/w3_baseline_model_report.md` summarizes accuracy, predictions, and model limitations.
