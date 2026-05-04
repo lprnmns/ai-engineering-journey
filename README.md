@@ -137,3 +137,16 @@ Run Week 1 checks:
 
 - `labs/ml/train_baseline_classifier.py` trains a Logistic Regression baseline model.
 - `docs/w3_baseline_model_report.md` summarizes accuracy, predictions, and model limitations.
+
+## Week 3 — Data and Baseline ML
+
+- [Week 3 Summary](docs/week3_summary.md)
+- [W3 EDA Report](docs/w3_eda_report.md)
+- [W3 Baseline Model Report](docs/w3_baseline_model_report.md)
+
+Run Week 3 checks:
+
+```bash
+./toolbox/scripts/run_week3_checks.sh
+```
+
