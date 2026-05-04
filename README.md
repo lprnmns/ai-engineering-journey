@@ -125,3 +125,10 @@ Run Week 1 checks:
 
 - `labs/data/eda_report.py` generates a Markdown EDA report from the cleaned student dataset.
 - `docs/w3_eda_report.md` summarizes missing values, target distribution, group statistics, and modeling readiness.
+
+
+### Feature Dataset
+
+- `labs/data/build_features.py` splits the cleaned student dataset into features and target.
+- The generated files under `data/processed/` are ready for a baseline classification model.
+
