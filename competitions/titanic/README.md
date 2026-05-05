@@ -1,0 +1,88 @@
+# Titanic Kaggle Workflow
+
+## Goal
+
+This project is not only about Titanic.
+
+The real goal is to learn a reusable Kaggle competition workflow:
+
+- read the competition description
+- understand the metric
+- inspect train/test/submission files
+- build a validation strategy
+- create a baseline
+- track experiments
+- generate a valid submission
+
+## Competition Files
+
+Expected raw files:
+
+- `train.csv`
+- `test.csv`
+- `gender_submission.csv`
+
+## Core ML Thinking
+
+```text
+train.csv  -> has features + target
+test.csv   -> has features, no target
+submission -> required output format
+```
+
+## Titanic Target
+
+The target column is:
+
+```text
+Survived
+```
+
+Meaning:
+
+- `1` means survived
+- `0` means did not survive
+
+## Important Rule
+
+Do not look at the test labels, because Kaggle test labels are hidden.
+
+A proper workflow is:
+
+```text
+train.csv
+  -> split into local train/validation
+  -> train model on local train
+  -> validate on local validation
+  -> train final model
+  -> predict test.csv
+  -> create submission.csv
+```
+
+## First Questions
+
+Before modeling, answer:
+
+1. What is the target?
+2. What is the metric?
+3. What files are provided?
+4. Which columns are numerical?
+5. Which columns are categorical?
+6. Which columns have missing values?
+7. Which features may be useful?
+8. Which features may leak target information?
+9. What is the simplest baseline?
+10. How will experiments be tracked?
+
+## Folder Structure
+
+```text
+competitions/titanic/
+  data/raw/
+  data/processed/
+  src/
+  reports/
+  submissions/
+  notebooks/
+  experiments/
+```
