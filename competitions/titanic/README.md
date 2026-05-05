@@ -99,3 +99,19 @@ Main idea:
 
 EDA is not decoration. EDA is where we identify target, missing values, column types, train/test alignment, and first baseline direction.
 
+## W4D3 — Titanic Preprocessing
+
+Added:
+
+- `competitions/titanic/src/preprocess.py`
+- `tests/test_titanic_preprocess.py`
+- processed baseline feature files under `competitions/titanic/data/processed/`
+
+Main idea:
+
+Missing values are not blindly filled. They are handled according to feature type and baseline strategy:
+
+- numeric features use median imputation
+- categorical features use most-frequent imputation
+- categorical features are one-hot encoded
+
