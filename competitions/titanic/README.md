@@ -143,3 +143,24 @@ Main idea:
 
 A Kaggle score is only useful when compared against a stable local validation strategy. We now track CV mean, CV std, public leaderboard score, and experiment notes.
 
+## W4D6 — Feature Engineering v1
+
+Added:
+
+- `competitions/titanic/src/feature_v1.py`
+- `competitions/titanic/src/log_feature_v1_experiment.py`
+- `competitions/titanic/reports/titanic_feature_v1_report.md`
+- `competitions/titanic/submissions/feature_v1_logreg_submission.csv`
+- `tests/test_titanic_feature_v1.py`
+
+Main idea:
+
+The first real Kaggle improvement loop is feature engineering, not model shopping.
+
+Feature v1 adds:
+
+- FamilySize
+- IsAlone
+- HasCabin
+- Title
+
