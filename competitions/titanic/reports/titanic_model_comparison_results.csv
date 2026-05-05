@@ -1,0 +1,4 @@
+model_name,cv_mean,cv_std,hypothesis,fold_scores
+hist_gradient_boosting,0.8372481325717155,0.013903002674359552,Boosting may improve tabular performance by sequentially correcting errors.,"0.84916, 0.85393, 0.81461, 0.83708, 0.83146"
+random_forest,0.832772581758835,0.012500582514546879,Tree ensemble can capture non-linear feature interactions.,"0.83240, 0.81461, 0.83146, 0.83146, 0.85393"
+logistic_regression,0.8294080723118448,0.011517860473501835,Linear baseline. Strong if features are mostly linearly separable.,"0.82682, 0.81461, 0.84270, 0.82022, 0.84270"

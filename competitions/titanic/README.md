@@ -177,3 +177,24 @@ Main idea:
 
 Feature engineering should be measured. Ablation study checks whether each engineered feature or feature group actually improves cross-validation score.
 
+## W4D8 — Model Comparison
+
+Added:
+
+- `competitions/titanic/src/model_comparison.py`
+- `competitions/titanic/src/log_model_comparison_experiment.py`
+- `competitions/titanic/reports/titanic_model_comparison_report.md`
+- `competitions/titanic/reports/titanic_model_comparison_results.csv`
+- `competitions/titanic/submissions/model_comparison_best_submission.csv`
+- `tests/test_titanic_model_comparison.py`
+
+Main idea:
+
+After ablation, keep the best simple feature set fixed and compare models. Controlled experiments change one thing at a time.
+
+Result:
+
+- Best local model: `hist_gradient_boosting`
+- CV mean: `0.83725`
+- Kaggle public score: `0.77272`
+
