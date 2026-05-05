@@ -86,3 +86,16 @@ competitions/titanic/
   notebooks/
   experiments/
 ```
+
+## W4D2 — Titanic EDA
+
+Added:
+
+- `competitions/titanic/src/eda.py`
+- `competitions/titanic/reports/titanic_eda_report.md`
+- `tests/test_titanic_eda.py`
+
+Main idea:
+
+EDA is not decoration. EDA is where we identify target, missing values, column types, train/test alignment, and first baseline direction.
+
