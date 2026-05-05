@@ -164,3 +164,16 @@ Feature v1 adds:
 - HasCabin
 - Title
 
+## W4D7 — Feature Ablation Study
+
+Added:
+
+- `competitions/titanic/src/ablation_study.py`
+- `competitions/titanic/reports/titanic_ablation_report.md`
+- `competitions/titanic/reports/titanic_ablation_results.csv`
+- `tests/test_titanic_ablation_study.py`
+
+Main idea:
+
+Feature engineering should be measured. Ablation study checks whether each engineered feature or feature group actually improves cross-validation score.
+
