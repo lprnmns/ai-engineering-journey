@@ -115,3 +115,16 @@ Missing values are not blindly filled. They are handled according to feature typ
 - categorical features use most-frequent imputation
 - categorical features are one-hot encoded
 
+## W4D4 — Titanic Baseline Submission
+
+Added:
+
+- `competitions/titanic/src/train_baseline.py`
+- `competitions/titanic/reports/titanic_baseline_report.md`
+- `competitions/titanic/submissions/baseline_logreg_submission.csv`
+- `tests/test_titanic_baseline.py`
+
+Main idea:
+
+A Kaggle baseline is not complete until it creates a valid submission file and is submitted for scoring.
+
