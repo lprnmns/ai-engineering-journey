@@ -1,1 +1,2 @@
 experiment_id,date,features,model,validation_strategy,local_score,public_lb_score,notes
+titanic_exp_001_logreg_baseline,2026-05-05,"Pclass, Age, SibSp, Parch, Fare, Sex, Embarked",LogisticRegression,5-fold StratifiedKFold accuracy,0.79239 +/- 0.01744,0.76555,"First valid Titanic baseline submission. Public score is lower than single split validation, so CV tracking is required."

@@ -128,3 +128,18 @@ Main idea:
 
 A Kaggle baseline is not complete until it creates a valid submission file and is submitted for scoring.
 
+## W4D5 — Cross-Validation and Experiment Logging
+
+Added:
+
+- `competitions/titanic/src/cross_validate.py`
+- `competitions/titanic/src/experiment_logging.py`
+- `competitions/titanic/reports/titanic_cross_validation_report.md`
+- updated `competitions/titanic/experiments/experiments.csv`
+- `tests/test_titanic_cross_validation.py`
+- `tests/test_titanic_experiment_logging.py`
+
+Main idea:
+
+A Kaggle score is only useful when compared against a stable local validation strategy. We now track CV mean, CV std, public leaderboard score, and experiment notes.
+
