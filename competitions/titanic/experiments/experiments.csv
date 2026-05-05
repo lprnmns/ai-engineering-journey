@@ -1,2 +1,3 @@
 experiment_id,date,features,model,validation_strategy,local_score,public_lb_score,notes
 titanic_exp_001_logreg_baseline,2026-05-05,"Pclass, Age, SibSp, Parch, Fare, Sex, Embarked",LogisticRegression,5-fold StratifiedKFold accuracy,0.79239 +/- 0.01744,0.76555,"First valid Titanic baseline submission. Public score is lower than single split validation, so CV tracking is required."
+titanic_exp_002_feature_v1_logreg,2026-05-05,"baseline + FamilySize, IsAlone, HasCabin, Title",LogisticRegression,5-fold StratifiedKFold accuracy,0.82939 +/- 0.00939,0.7703,"Feature engineering v1: family, cabin availability, and title extracted from name."
