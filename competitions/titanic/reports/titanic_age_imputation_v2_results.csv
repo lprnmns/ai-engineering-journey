@@ -1,0 +1,2 @@
+experiment_id,model_name,cv_mean,cv_std,fold_scores,baseline_reference
+titanic_exp_004_age_imputation_v2,hist_gradient_boosting,0.8349946644906158,0.018835661599988666,"0.85475, 0.85393, 0.80337, 0.83146, 0.83146","exp_003 plus_title hgb: CV 0.83725, public LB 0.77272"

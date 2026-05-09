@@ -198,3 +198,24 @@ Result:
 - CV mean: `0.83725`
 - Kaggle public score: `0.77272`
 
+## W4D10 — Age Imputation v2
+
+Added:
+
+- `competitions/titanic/src/age_imputation_v2.py`
+- `competitions/titanic/reports/titanic_age_imputation_v2_report.md`
+- `competitions/titanic/reports/titanic_age_imputation_v2_results.csv`
+- `competitions/titanic/submissions/age_imputation_v2_hgb_submission.csv`
+- `tests/test_titanic_age_imputation_v2.py`
+
+Main idea:
+
+Test whether grouped Age imputation by `Title + Pclass + Sex` plus `AgeBin` improves over the current best `plus_title + HistGradientBoosting` pipeline.
+
+Result:
+
+- CV mean: `0.83499`
+- CV std: `0.01884`
+- Current best reference: `0.83725 ± 0.01390`
+- Decision: do not submit yet; keep as a negative/diagnostic experiment.
+
