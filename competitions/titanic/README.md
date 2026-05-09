@@ -302,3 +302,56 @@ Decision:
 
 Before future submissions, inspect whether a new model is flipping the same risky passenger groups.
 
+## W4D17 — Risky Flip Guard
+
+Added:
+
+- `competitions/titanic/src/risky_flip_guard.py`
+- `competitions/titanic/reports/titanic_risky_flip_guard_report.md`
+- `competitions/titanic/reports/titanic_risky_flip_guard_summary.csv`
+- `competitions/titanic/reports/titanic_risky_flip_guard_rows.csv`
+- `tests/test_titanic_risky_flip_guard.py`
+
+Main idea:
+
+Create a pre-submission guardrail that compares a candidate submission against the current best public submission.
+
+The guard checks whether a candidate makes risky prediction flips, especially:
+
+- current-best `0` → candidate `1`
+- `Pclass=3 female` 0→1 flips
+- `Miss/Mrs` 0→1 flips
+- `Embarked=S/C` 0→1 flips
+
+Result:
+
+- `deck_ticket_fare`: `DO_NOT_SUBMIT_WITHOUT_REVIEW`
+- `hgb_tuned`: `DO_NOT_SUBMIT_WITHOUT_REVIEW`
+- `rare_title_interactions`: `DO_NOT_SUBMIT_WITHOUT_REVIEW`
+- `repeated_cv_best`: `NO_NEW_INFORMATION`
+
+Decision:
+
+Use this guard before future Kaggle submissions. CV improvement alone is not enough.
+
+## W4D18 — PassengerId and Surname Analysis
+
+Added:
+
+- `competitions/titanic/src/id_and_surname_analysis.py`
+- `competitions/titanic/reports/titanic_passenger_id_bins.csv`
+- `competitions/titanic/reports/titanic_surname_survival.csv`
+- `competitions/titanic/reports/titanic_id_and_surname_analysis.md`
+- `tests/test_titanic_id_and_surname_analysis.py`
+
+Main idea:
+
+Analyze whether PassengerId ranges and surname/family groups reveal useful structure.
+
+Key findings:
+
+- PassengerId bins show different survival rates, but PassengerId should be treated carefully because it may encode dataset ordering rather than a real-world feature.
+- Surname groups show strong family-level patterns. Some families have very low survival rates, while others have high survival rates.
+- Safe future features may include `SurnameGroupSize`, `IsLargeFamily`, or train/test combined surname group counts.
+- Direct surname target survival rate is risky because it can introduce target leakage.
+
