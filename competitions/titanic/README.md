@@ -398,3 +398,43 @@ Risky candidates:
 - `FirstGivenToken`
 - Any target-mean survival feature by surname/title/token.
 
+## W4D20 — Auto Experiment Suite
+
+Added:
+
+- `competitions/titanic/src/auto_experiment_suite.py`
+- `tests/test_titanic_auto_experiment_suite.py`
+- `scripts/run_titanic_auto_experiment_suite.sh`
+- `scripts/run_titanic_auto_experiment_suite_dry_submit.sh`
+- `scripts/run_titanic_auto_experiment_suite_submit.sh`
+- `competitions/titanic/reports/auto_experiment_suite/auto_experiment_results.csv`
+- `competitions/titanic/reports/auto_experiment_suite/auto_experiment_qualified.csv`
+- `competitions/titanic/reports/auto_experiment_suite/auto_experiment_guard_summary.csv`
+- `competitions/titanic/reports/auto_experiment_suite/auto_experiment_suite_report.md`
+- `competitions/titanic/submissions/auto_experiment_suite/`
+
+Main idea:
+
+Run a controlled experiment suite across multiple safe feature sets, model configurations, repeated CV seeds, and current-best flip guard checks.
+
+Result:
+
+- Total experiments: `42`
+- Qualified experiments: `0`
+- Tests: `126 passed`
+- Type check: `mypy Success`
+
+Best candidate:
+
+- `auto_008_safe_family_counts_hgb_reference`
+- CV mean: `0.83875`
+- CV std: `0.01789`
+- Risk-adjusted score: `0.82086`
+- Changed predictions vs current best: `13`
+- 0→1 flips: `7`
+- Guard decision: `DO_NOT_SUBMIT_WITHOUT_REVIEW`
+
+Decision:
+
+Do not submit automatically. The best candidate passed the CV/risk-adjusted signal but failed the guard by a small margin. This suggests family count features are promising, but still too risky to submit without deeper changed-row analysis.
+
