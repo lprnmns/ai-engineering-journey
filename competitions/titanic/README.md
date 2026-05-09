@@ -250,3 +250,33 @@ Decision:
 
 Negative experiment. Do not use this feature set as the new best. It changed 20 predictions but moved public leaderboard in the wrong direction.
 
+## W4D12 — HGB Tuning
+
+Added:
+
+- `competitions/titanic/src/hgb_tuning.py`
+- `competitions/titanic/reports/titanic_hgb_tuning_report.md`
+- `competitions/titanic/reports/titanic_hgb_tuning_results.csv`
+- `competitions/titanic/submissions/hgb_tuned_submission.csv`
+- `tests/test_titanic_hgb_tuning.py`
+
+Main idea:
+
+Tune `HistGradientBoostingClassifier` while keeping the current best feature set fixed.
+
+Best local config:
+
+- Config: `more_min_samples_leaf`
+- CV mean: `0.84845`
+- CV std: `0.02347`
+- Public LB: `0.75837`
+
+Decision:
+
+Negative experiment. The tuned model improved local CV but dropped sharply on public leaderboard. High CV std suggests instability or overfitting.
+
+Current best remains:
+
+- `plus_title + HistGradientBoosting`
+- Public LB: `0.77272`
+
