@@ -1,0 +1,2 @@
+experiment_id,model_name,cv_mean,cv_std,delta_vs_current_best,fold_scores,current_best_cv_reference,current_best_public_lb_reference
+titanic_exp_008_rare_title_interactions,hist_gradient_boosting,0.849588851923922,0.011667342249090053,0.012338851923921923,"0.86592, 0.85955, 0.83708, 0.83708, 0.84831",0.83725,0.77272
