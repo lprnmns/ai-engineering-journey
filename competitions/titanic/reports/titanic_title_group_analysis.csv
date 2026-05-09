@@ -1,0 +1,10 @@
+TitleGroup,passenger_count,survived_count,survival_rate
+CommonMale,517,81,0.15667311411992263
+CommonFemale,311,230,0.7395498392282959
+ChildMale,40,23,0.575
+Professional,7,3,0.42857142857142855
+Clergy,6,0,0.0
+Military,5,2,0.4
+NobleMale,3,1,0.3333333333333333
+NobleFemale,1,1,1.0
+RareOther,1,1,1.0
