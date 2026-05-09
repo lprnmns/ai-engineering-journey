@@ -1,0 +1,2 @@
+experiment_id,model_name,cv_mean,cv_std,fold_scores,baseline_reference
+titanic_exp_005_deck_ticket_fare,hist_gradient_boosting,0.83611198292637,0.01913229270595963,"0.86034, 0.84831, 0.80337, 0.83146, 0.83708","exp_003 plus_title hgb: CV 0.83725, public LB 0.77272"

@@ -29,6 +29,8 @@ Estimated extra correct predictions needed: 12
 | titanic_exp_001_logreg_baseline | LogisticRegression | 0.76555 | 0.79239 +/- 0.01744 |
 | titanic_exp_002_feature_v1_logreg | LogisticRegression | 0.77030 | 0.82939 +/- 0.00939 |
 | titanic_exp_003_model_comparison_hgb | hist_gradient_boosting | 0.77272 | 0.83725 +/- 0.01390 |
+| titanic_exp_004_age_imputation_v2 | hist_gradient_boosting | 0.00000 | 0.83499 +/- 0.01884 |
+| titanic_exp_005_deck_ticket_fare | hist_gradient_boosting | 0.75837 | 0.83611 +/- 0.01913 |
 
 ## Diagnosis
 

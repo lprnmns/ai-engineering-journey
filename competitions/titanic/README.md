@@ -219,3 +219,34 @@ Result:
 - Current best reference: `0.83725 ± 0.01390`
 - Decision: do not submit yet; keep as a negative/diagnostic experiment.
 
+## W4D11 — Deck, Ticket Group, and Fare Per Person
+
+Added:
+
+- `competitions/titanic/src/deck_ticket_fare.py`
+- `competitions/titanic/reports/titanic_deck_ticket_fare_report.md`
+- `competitions/titanic/reports/titanic_deck_ticket_fare_results.csv`
+- `competitions/titanic/submissions/deck_ticket_fare_hgb_submission.csv`
+- `tests/test_titanic_deck_ticket_fare.py`
+
+Main idea:
+
+Test whether Titanic-specific group/location features improve the current best pipeline.
+
+Features:
+
+- `Deck`
+- `TicketGroupSize`
+- `FarePerPerson`
+
+Result:
+
+- CV mean: `0.83611`
+- CV std: `0.01913`
+- Public LB: `0.75837`
+- Current best reference: `0.77272`
+
+Decision:
+
+Negative experiment. Do not use this feature set as the new best. It changed 20 predictions but moved public leaderboard in the wrong direction.
+

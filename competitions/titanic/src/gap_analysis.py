@@ -39,7 +39,10 @@ def parse_public_score(value: str) -> float:
     if not cleaned:
         return 0.0
 
-    return float(cleaned)
+    try:
+        return float(cleaned)
+    except ValueError:
+        return 0.0
 
 
 def load_experiments(path: Path = EXPERIMENTS_PATH) -> list[ExperimentSummary]:

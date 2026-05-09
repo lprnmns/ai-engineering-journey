@@ -56,3 +56,7 @@ def test_build_priority_experiments_starts_with_age_imputation() -> None:
     experiments = build_priority_experiments()
 
     assert experiments[0]["experiment_id"] == "titanic_exp_004_age_imputation_v2"
+
+def test_parse_public_score_handles_non_numeric_value() -> None:
+    assert parse_public_score("not_submitted") == 0.0
+
