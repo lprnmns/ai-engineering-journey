@@ -1,0 +1,18 @@
+RawTitle,passenger_count,survived_count,survival_rate
+Mr,517,81,0.15667311411992263
+Miss,182,127,0.6978021978021978
+Mrs,125,99,0.792
+Master,40,23,0.575
+Dr,7,3,0.42857142857142855
+Rev,6,0,0.0
+Mlle,2,2,1.0
+Col,2,1,0.5
+Major,2,1,0.5
+Lady,1,1,1.0
+Mme,1,1,1.0
+Ms,1,1,1.0
+Sir,1,1,1.0
+the Countess,1,1,1.0
+Capt,1,0,0.0
+Don,1,0,0.0
+Jonkheer,1,0,0.0

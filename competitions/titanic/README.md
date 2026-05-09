@@ -355,3 +355,46 @@ Key findings:
 - Safe future features may include `SurnameGroupSize`, `IsLargeFamily`, or train/test combined surname group counts.
 - Direct surname target survival rate is risky because it can introduce target leakage.
 
+## W4D19 — Name, Family, and PassengerId Pattern Analysis
+
+Added:
+
+- `competitions/titanic/src/name_family_id_pattern_analysis.py`
+- `competitions/titanic/reports/titanic_name_family_id_pattern_analysis.md`
+- `competitions/titanic/reports/titanic_safe_family_features_train.csv`
+- `competitions/titanic/reports/titanic_safe_family_features_test.csv`
+- `competitions/titanic/reports/titanic_surname_feature_analysis.csv`
+- `competitions/titanic/reports/titanic_passenger_id_jump_segments.csv`
+- `competitions/titanic/reports/titanic_raw_title_analysis.csv`
+- `competitions/titanic/reports/titanic_title_group_analysis.csv`
+- `competitions/titanic/reports/titanic_first_given_token_analysis.csv`
+- `tests/test_titanic_name_family_id_pattern_analysis.py`
+
+Main idea:
+
+Analyze safe family/surname structural features, PassengerId jump segments, raw title/status groups, and first given-name tokens.
+
+Key findings:
+
+- `SurnameTicketGroupSize` shows strong non-linear signal. Small surname-ticket groups have much higher survival, while very large groups have very low survival.
+- PassengerId jump segments show survival-rate shifts, but PassengerId is risky as a model feature because it may encode dataset ordering.
+- Raw title/status is very predictive: `Mr` is low survival, `Mrs/Miss` high survival, `Master` moderate, `Rev` very low.
+- First given-name tokens show patterns but are likely noisy and overfit-prone.
+
+Safe future feature candidates:
+
+- `SurnameGroupSize`
+- `SurnamePclassGroupSize`
+- `SurnameTicketGroupSize`
+- `IsSoloSurname`
+- `IsLargeSurnameGroup`
+- `TitleGroup`
+- `HasParenthesesName`
+- `HasQuotedNickname`
+
+Risky candidates:
+
+- `PassengerIdJumpSegment`
+- `FirstGivenToken`
+- Any target-mean survival feature by surname/title/token.
+
