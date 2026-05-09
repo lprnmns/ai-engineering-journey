@@ -5,4 +5,4 @@ pandas
 pandas-stubs
 scikit-learn
 kaggle
-
+matplotlib
