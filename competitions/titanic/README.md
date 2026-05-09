@@ -280,3 +280,25 @@ Current best remains:
 - `plus_title + HistGradientBoosting`
 - Public LB: `0.77272`
 
+## W4D16 — Submission Difference Analysis
+
+Added:
+
+- `competitions/titanic/src/submission_difference_analysis.py`
+- `competitions/titanic/reports/titanic_submission_difference_analysis.md`
+- `competitions/titanic/reports/titanic_submission_difference_rows.csv`
+- `competitions/titanic/reports/titanic_submission_difference_segments.csv`
+- `tests/test_titanic_submission_difference_analysis.py`
+
+Main idea:
+
+Compare failed submissions against the current best submission to understand which passenger predictions were changed.
+
+Key finding:
+
+Failed submissions mostly changed current-best `0` predictions into `1`, especially around `Pclass=3`, female passengers, and `Miss/Mrs`-like groups.
+
+Decision:
+
+Before future submissions, inspect whether a new model is flipping the same risky passenger groups.
+
