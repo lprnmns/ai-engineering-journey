@@ -438,3 +438,53 @@ Decision:
 
 Do not submit automatically. The best candidate passed the CV/risk-adjusted signal but failed the guard by a small margin. This suggests family count features are promising, but still too risky to submit without deeper changed-row analysis.
 
+## W4D18 — Model Zoo and Ensemble
+
+Added:
+
+- `competitions/titanic/src/model_zoo_ensemble.py`
+- `competitions/titanic/reports/titanic_model_zoo_ensemble_report.md`
+- `competitions/titanic/reports/titanic_model_zoo_ensemble_results.csv`
+- `competitions/titanic/submissions/model_zoo_ensemble_best_submission.csv`
+- `tests/test_titanic_model_zoo_ensemble.py`
+
+Main idea:
+
+Expand beyond the HGB-only approach by testing a broader tabular model zoo and voting ensembles.
+
+Feature sets:
+
+- `plus_title`
+- `binned_competition`
+- `wide_competition`
+- `nb_competition_ordinal`
+
+Models:
+
+- GaussianNB
+- LogisticRegression
+- KNN
+- SVC
+- DecisionTree
+- RandomForest
+- ExtraTrees
+- AdaBoost
+- GradientBoosting
+- HistGradientBoosting
+- XGBoost when available
+
+Best local candidate:
+
+- Candidate: `plus_title__top3_hard_voting`
+- CV mean: `0.84397`
+- CV std: `0.01504`
+
+Guard result:
+
+- `model_zoo`: `DO_NOT_SUBMIT_WITHOUT_REVIEW`
+- Reason: risky `0_to_1` flips, especially `Pclass=3 female` and `Miss/Mrs` groups.
+
+Decision:
+
+Do not submit yet. The local CV improved, but the risky flip guard detected the same failure pattern that damaged recent public leaderboard submissions.
+
