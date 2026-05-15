@@ -3,11 +3,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from labs.rag.chunking import Chunk, ChunkSearchResult, chunk_documents
-from labs.rag.mini_semantic_search import cosine_similarity, text_to_vector
+from labs.rag.mini_semantic_search import cosine_similarity
 from labs.rag.sample_docs import Document, SAMPLE_DOCUMENTS
-
-
-Vector = dict[str, float]
+from labs.rag.vectorizer import TermFrequencyVectorizer, Vector, Vectorizer
 
 
 @dataclass(frozen=True)
@@ -29,14 +27,21 @@ class InMemoryVectorStore:
     This class stores chunks and their vectors in memory.
 
     Real vector databases do the same idea at larger scale:
-    chunk + metadata + vector.
+
+    chunk + metadata + vector
+
+    The important design point is this:
+
+    The store does not know how vectors are created.
+    It only receives a Vectorizer.
     """
 
-    def __init__(self) -> None:
+    def __init__(self, vectorizer: Vectorizer | None = None) -> None:
         self._items: list[StoredChunk] = []
+        self._vectorizer = vectorizer or TermFrequencyVectorizer()
 
     def add_chunk(self, chunk: Chunk) -> None:
-        vector = text_to_vector(f"{chunk.title} {chunk.text}")
+        vector = self._vectorizer.vectorize(f"{chunk.title} {chunk.text}")
 
         self._items.append(
             StoredChunk(
@@ -53,7 +58,7 @@ class InMemoryVectorStore:
         if top_k <= 0:
             raise ValueError("top_k must be greater than zero")
 
-        query_vector = text_to_vector(query)
+        query_vector = self._vectorizer.vectorize(query)
         results: list[ChunkSearchResult] = []
 
         for item in self._items:
@@ -92,6 +97,7 @@ def build_vector_store(
     documents: list[Document] | None = None,
     sentences_per_chunk: int = 1,
     overlap: int = 0,
+    vectorizer: Vectorizer | None = None,
 ) -> InMemoryVectorStore:
     if documents is None:
         documents = SAMPLE_DOCUMENTS
@@ -102,7 +108,7 @@ def build_vector_store(
         overlap=overlap,
     )
 
-    store = InMemoryVectorStore()
+    store = InMemoryVectorStore(vectorizer=vectorizer)
     store.add_chunks(chunks)
 
     return store
