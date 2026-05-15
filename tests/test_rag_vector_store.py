@@ -133,3 +133,40 @@ def test_build_vector_store_can_search_sample_documents() -> None:
     )
 
     assert results[0].doc_id == "doc_005"
+
+class KeywordVectorizer:
+    def vectorize(self, text: str) -> dict[str, float]:
+        lowered = text.lower()
+
+        return {
+            "python_signal": 1.0 if "python" in lowered or "sanal" in lowered else 0.0,
+            "git_signal": 1.0 if "git" in lowered or "branch" in lowered else 0.0,
+        }
+
+
+def test_store_accepts_custom_vectorizer() -> None:
+    store = InMemoryVectorStore(vectorizer=KeywordVectorizer())
+
+    python_chunk = Chunk(
+        chunk_id="chunk_python",
+        doc_id="doc_python",
+        title="Python",
+        text="Python sanal ortam oluşturmak için venv kullanılır.",
+        source="source/python",
+        chunk_index=1,
+    )
+    git_chunk = Chunk(
+        chunk_id="chunk_git",
+        doc_id="doc_git",
+        title="Git",
+        text="Git branch ile kod değişiklikleri yönetilir.",
+        source="source/git",
+        chunk_index=1,
+    )
+
+    store.add_chunks([python_chunk, git_chunk])
+
+    results = store.search("sanal ortam", top_k=1)
+
+    assert results[0].chunk_id == "chunk_python"
+
