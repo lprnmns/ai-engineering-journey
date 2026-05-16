@@ -4,6 +4,7 @@ from labs.rag.chunking import ChunkSearchResult
 from labs.rag.no_answer_detection import (
     answer_query_with_guard,
     decide_answerability,
+    filter_results_by_score,
     format_guarded_answer,
     get_score_at,
 )
@@ -121,3 +122,32 @@ def test_format_guarded_answer_contains_decision_and_answer() -> None:
     assert "Answerable" in text
     assert "Reason" in text
     assert "Answer:" in text
+
+def test_filter_results_by_score_removes_weak_evidence() -> None:
+    results = [
+        make_result(0.8, chunk_id="strong_chunk"),
+        make_result(0.04, chunk_id="weak_chunk"),
+        make_result(0.0, chunk_id="zero_chunk"),
+    ]
+
+    filtered = filter_results_by_score(results, min_score=0.05)
+
+    assert [result.chunk_id for result in filtered] == ["strong_chunk"]
+
+
+def test_filter_results_by_score_rejects_invalid_min_score() -> None:
+    with pytest.raises(ValueError):
+        filter_results_by_score([make_result(0.8)], min_score=-0.1)
+
+
+def test_answer_query_with_guard_does_not_include_zero_score_sources() -> None:
+    output = answer_query_with_guard(
+        query="RAG sisteminde ilgili doküman parçaları nasıl bulunur?",
+        top_k=3,
+        min_score=0.05,
+    )
+
+    assert output.decision.is_answerable is True
+    assert output.answer.sources
+    assert all(source.score >= 0.05 for source in output.answer.sources)
+
