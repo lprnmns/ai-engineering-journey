@@ -31,6 +31,20 @@ def get_score_at(results: list[ChunkSearchResult], index: int) -> float:
     return results[index].score
 
 
+def filter_results_by_score(
+    results: list[ChunkSearchResult],
+    min_score: float,
+) -> list[ChunkSearchResult]:
+    if min_score < 0.0:
+        raise ValueError("min_score must be zero or greater")
+
+    return [
+        result
+        for result in results
+        if result.score >= min_score
+    ]
+
+
 def decide_answerability(
     query: str,
     results: list[ChunkSearchResult],
@@ -123,11 +137,16 @@ def answer_query_with_guard(
             ),
         )
 
+    filtered_results = filter_results_by_score(
+        results=results,
+        min_score=min_score,
+    )
+
     return GuardedRagAnswer(
         decision=decision,
         answer=build_extractive_answer(
             query=query,
-            results=results,
+            results=filtered_results,
             min_score=min_score,
         ),
     )
