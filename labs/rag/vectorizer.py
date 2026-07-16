@@ -5,7 +5,6 @@ from typing import Protocol
 
 from labs.rag.mini_semantic_search import text_to_vector
 
-
 Vector = dict[str, float]
 
 
