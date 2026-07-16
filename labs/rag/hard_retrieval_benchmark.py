@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from labs.rag.evaluation import (
     EvaluationReport,
     GoldenQuery,
+    ChunkRetriever,
     QueryEvaluation,
     RetrievalMetrics,
     evaluate_retrieval,
@@ -17,7 +18,7 @@ from labs.rag.hybrid_weight_experiment import (
     evaluate_hybrid_query,
 )
 from labs.rag.sample_docs import Document
-from labs.rag.vector_store import InMemoryVectorStore, build_vector_store
+from labs.rag.vector_store import build_vector_store
 from labs.rag.vectorizer import TermFrequencyVectorizer
 from labs.rag.vectorizer_comparison import build_tfidf_vector_store
 
@@ -171,7 +172,7 @@ def format_hybrid_rows(evaluations: list[HybridQueryEvaluation]) -> list[str]:
 
 def evaluate_standard_store(
     name: str,
-    store: InMemoryVectorStore,
+    store: ChunkRetriever,
     top_k: int = 3,
 ) -> HardBenchmarkResult:
     report: EvaluationReport = evaluate_retrieval(

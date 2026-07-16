@@ -1,9 +1,14 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Protocol
 
 from labs.rag.chunking import ChunkSearchResult
-from labs.rag.vector_store import InMemoryVectorStore, build_vector_store
+from labs.rag.vector_store import build_vector_store
+
+
+class ChunkRetriever(Protocol):
+    def search(self, query: str, top_k: int = 3) -> list[ChunkSearchResult]: ...
 
 
 @dataclass(frozen=True)
@@ -86,7 +91,7 @@ def find_expected_rank(
 
 
 def evaluate_query(
-    store: InMemoryVectorStore,
+    store: ChunkRetriever,
     golden_query: GoldenQuery,
     top_k: int = 3,
 ) -> QueryEvaluation:
@@ -131,7 +136,7 @@ def calculate_metrics(evaluations: list[QueryEvaluation]) -> RetrievalMetrics:
 
 
 def evaluate_retrieval(
-    store: InMemoryVectorStore | None = None,
+    store: ChunkRetriever | None = None,
     golden_queries: list[GoldenQuery] | None = None,
     top_k: int = 3,
 ) -> EvaluationReport:
