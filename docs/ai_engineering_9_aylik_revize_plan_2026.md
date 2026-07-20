@@ -1,6 +1,6 @@
 # 9 Aylık AI Engineering Yol Haritası — Revize 2026
 
-**Güncelleme tarihi:** 16 Temmuz 2026
+**Güncelleme tarihi:** 20 Temmuz 2026
 
 **Hedef profil:** Production-oriented AI Engineer / Applied AI Engineer / RAG Engineer
 
@@ -67,8 +67,14 @@ Güçlendirilmesi gereken bilgisayar mühendisliği alanları:
 - Weak evidence filtering
 - No-answer detection
 - Answerability evaluation, threshold ve profiles
+- Sentence Transformers tabanlı dense embedding
+- Dense in-memory vector store
+- Türkçe paraphrase retrieval benchmarkı
+- TF-IDF ve dense retrieval karşılaştırması
+- Dense + lexical hybrid retrieval ve ağırlık deneyi
+- Cross-encoder reranker bileşeni
 
-16 Mayıs paylaşımında 239 test bulunurken repo daha sonra 266 teste ve daha sert answerability benchmarklarına ilerledi. Bu, Month 2 hedeflerinden “stronger evals” kısmında gerçek ilerleme olduğunu gösteriyor.
+16 Mayıs paylaşımında 239 test bulunurken repo daha sonra 293 teste; dense embedding, hybrid retrieval ve cross-encoder reranker katmanlarına ilerledi. Bu, Month 2 hedeflerinden hem “dense embeddings” hem de “stronger evals” bölümlerinde gerçek ilerleme olduğunu gösteriyor.
 
 ## 4. Dışarıdan gelen teknik geri bildirimin anlamı
 
@@ -118,26 +124,26 @@ MCP güncel bir araç bağlantı standardıdır; ancak temel tool-calling mantı
 |---|---:|---|
 | Yol haritası öncesi CS/Python/ML hazırlığı | Tamamlandı | Üniversite dersleri, Python engineering ve Titanic çalışmaları |
 | Month 1 — Mini RAG from scratch | Tamamlandı | Chunking, vector store, TF-IDF, hybrid retrieval, no-answer ve answerability evals |
-| Month 2 — Embeddings, stronger evals, real LLM, deployment | Yaklaşık %25–30 | Stronger evals ilerledi; dense embedding, gerçek LLM ve deployment yok |
+| Month 2 — Embeddings, stronger evals, real LLM, deployment | Yaklaşık %35–40 | Dense embedding, lexical/dense karşılaştırması, dense hybrid ve reranker bileşeni var; büyük eval seti, gerçek LLM ve deployment yok |
 | Month 3–9 | Başlanmadı | Production RAG, transformer, agents, MLOps/cloud, gerçek ürün ve kariyer paketi |
 
-**9 aylık kamuya açık programdaki katı ilerleme:** yaklaşık **%14–15**.
+**9 aylık kamuya açık programdaki katı ilerleme:** yaklaşık **%15–16**.
 
 Hesap:
 
 ```text
 Month 1 tamamlandı       = 1.00 ay
-Month 2 yaklaşık %25–30  = 0.25–0.30 ay
-Toplam                   = 1.25–1.30 / 9
-                         ≈ %14–15
+Month 2 yaklaşık %35–40  = 0.35–0.40 ay
+Toplam                   = 1.35–1.40 / 9
+                         ≈ %15–16
 ```
 
 Bu oran bilgi seviyesinin yalnızca %15 olduğu anlamına gelmez. Bilgisayar mühendisliği ve yol haritası öncesi çalışmalar dahil edildiğinde junior yazılım/AI hazırlığı yaklaşık %40 seviyesindedir. İki sayı farklı şeyleri ölçer:
 
-- `%14–15`: İlan ettiğin dokuz aylık programın tamamlanma oranı
+- `%15–16`: İlan ettiğin dokuz aylık programın tamamlanma oranı
 - `yaklaşık %40`: Mevcut akademik ve teknik altyapının junior AI Engineer hazırlığına katkısı
 
-Şu an doğru başlangıç noktası **Month 2'ye devam etmektir**.
+Şu an doğru başlangıç noktası **Month 2'ye mentorun verdiği ilk hafta staj sprintiyle devam etmektir**.
 
 ## 7. Çalışma sistemi
 
@@ -200,11 +206,30 @@ Tamamlananlar:
 
 > RAG yalnızca top-k chunk bulup cevap üretmek değildir. Sistem, bulunan kanıtın yeterli olup olmadığına ve cevap vermenin güvenli olup olmadığına karar vermelidir.
 
-**Kabul kriteri:** Mevcut 266 test, temiz mypy sonucu ve answerable/unanswerable örnekleri ayıran benchmark nedeniyle tamamlandı.
+**Kabul kriteri:** Month 1 sonunda mevcut testler, temiz mypy sonucu ve answerable/unanswerable örnekleri ayıran benchmark nedeniyle tamamlandı. Repo sonraki Month 2 çalışmalarıyla 293 teste ulaştı.
 
 ### Month 2 — Embeddings, Stronger Evals, Real LLM ve İlk Deployment
 
-**Durum:** Devam ediyor; yaklaşık %25–30.
+**Durum:** Devam ediyor; yaklaşık %35–40.
+
+20 Temmuz 2026 itibarıyla tamamlanan veya ilerleyen parçalar:
+
+- Sentence Transformers tabanlı dense vectorizer
+- Dense in-memory vector store
+- Türkçe paraphrase benchmarkı
+- TF-IDF ve dense retrieval karşılaştırması
+- Dense + lexical hybrid retrieval
+- Hybrid ağırlık deneyi
+- Dense answerability threshold deneyi
+- Bağımsız cross-encoder reranker bileşeni
+
+Ana eksikler:
+
+- En az 50 versioned eval case, BM25, nDCG ve bootstrap/confidence interval
+- Dense/hybrid retrieval → reranker birleşik pipeline ve karşılaştırmalı benchmark
+- Gerçek PDF ingestion ve kalıcı vector database
+- Gerçek LLM, structured/source-mapped cevap ve provider abstraction
+- FastAPI, Docker, CI, cloud deployment, latency ve maliyet ölçümü
 
 #### Hafta 1 — Dense embeddings
 
@@ -246,6 +271,21 @@ Tamamlananlar:
 **Ay çıktısı:** Dense retrieval ve gerçek LLM kullanan, kaynak gösteren ve gerektiğinde cevap vermeyen deploy edilmiş mini RAG servisi.
 
 **Kabul kriteri:** En az 50 eval case, kaynaklı cevap, no-answer precision/recall, yeşil CI, Docker image ve çalışan demo endpoint'i.
+
+#### Staj sprinti — Mentor 1. hafta programı
+
+Mentor programı Month 2'ye doğrudan entegre edilmiştir. Ayrıntılı eşleme ve teslim checklist'i için [Staj 1. Hafta Programı — Mevcut Durum ve Yol Haritası Entegrasyonu](staj_1_hafta_program_karsilastirmasi.md) belgesine bakılmalıdır.
+
+Sıra:
+
+1. Transformer, attention, token, context window, prompt katmanları ve açık model aileleri
+2. Mevcut dense embedding kodunu kullanan en az 10 cümlelik açıklamalı deney
+3. Gerçek PDF, iki chunk ayarı, kalıcı vector DB, dense/hybrid → rerank ve gerçek LLM içeren RAG
+4. Ollama veya LM Studio üzerinde iki yerel model benchmarkı
+5. Gerçek kurumsal problem ve ilk ürün fikri
+6. Teknik raporların, ölçümlerin, mimari diyagramın ve demonun 15 dakikalık sunumda birleştirilmesi
+
+Bu sprint Month 4'teki transformer/open-model konularının girişini ve Month 7–8'deki gerçek problem seçimini erkene çeker. İlerideki ayların daha derin PyTorch, serving, ürün geliştirme ve hardening hedefleri korunur.
 
 ### Month 3 — Production RAG, PostgreSQL ve Ingestion
 
@@ -589,22 +629,33 @@ Ek zorunluluklar:
 - Negatif ve adversarial test bulunmalı.
 - “Neden bu teknoloji?” sorusu cevaplanmalı.
 
-## 12. Şu andan itibaren ilk 30 gün
+## 12. Sıradaki çalışma sırası — mentor programıyla bütünleştirilmiş
 
-1. Mevcut RAG için tek bir architecture/evaluation README'si oluştur.
-2. TF-IDF sistemini “semantic embedding” olarak adlandıran yerleri düzelt.
-3. BM25 baseline ekle.
-4. Sentence Transformers ile dense retriever ekle.
-5. Recall@k, MRR ve nDCG metriklerini ekle.
-6. En az 50 versioned golden query oluştur.
-7. Dense, lexical, hybrid ve reranked sonuçları karşılaştır.
-8. Gerçek LLM ile structured, kaynaklı cevap üret.
-9. FastAPI `/query` endpoint'i oluştur.
-10. Ruff + GitHub Actions + Docker ekle.
+### Aşama A — Staj 1. hafta teslim paketi
 
-30 gün sonunda beklenen çıktı:
+1. Transformer/token/attention/context window teknik notunu, prompt deneyini ve açık model karşılaştırmasını tamamla.
+2. Mevcut Sentence Transformers katmanıyla en az 10 cümlelik embedding deneyini ve yorum tablosunu üret.
+3. Gerçek PDF üzerinde iki chunk ayarını karşılaştır; dense/hybrid retrieval'ı reranker'a bağla.
+4. ChromaDB, Qdrant, Milvus ve Pinecone karar notundan sonra sprint için tek bir kalıcı vector DB seç.
+5. Gerçek LLM ile kaynaklı cevap ve no-answer akışını birleştir.
+6. Ollama veya LM Studio üzerinde iki yerel modeli ortak test setiyle ölç.
+7. Kurumsal problemi, kullanıcıyı, veriyi, başarı metriğini ve riskleri tanımla.
+8. Tüm çıktıları 15 dakikalık teknik sunum ve kısa demoda birleştir.
 
-> CI üzerinde test edilen, dense retrieval ve gerçek LLM kullanan, kaynak gösteren, gerektiğinde cevap vermeyen ve API olarak deploy edilen mini RAG sistemi.
+### Aşama B — Month 2'yi production-minded şekilde kapatma
+
+1. En az 50 versioned golden query oluştur.
+2. BM25 baseline, Recall@k ve nDCG ekle.
+3. Dense, lexical, hybrid ve reranked sonuçları tek benchmarkta karşılaştır.
+4. Bootstrap veya confidence interval ile küçük eval seti belirsizliğini göster.
+5. Provider-independent LLM interface, structured output, citation mapping, timeout ve retry ekle.
+6. FastAPI `/health`, `/ready` ve `/query` endpoint'lerini oluştur.
+7. Ruff + mypy + pytest CI, Docker image ve basit cloud deployment ekle.
+8. Token, maliyet ve p50/p95 latency ölçümünü raporla.
+
+Month 2 sonunda beklenen çıktı:
+
+> Gerçek PDF kullanan; dense/hybrid retrieval ve reranking yapan; kaynak gösteren, gerektiğinde cevap vermeyen; test, CI, Docker ve API ile tekrar üretilebilir mini RAG servisi.
 
 ## 13. Kaynaklar
 
@@ -625,9 +676,10 @@ Ek zorunluluklar:
 Paylaşım ve Git geçmişi birlikte değerlendirildiğinde doğru konum şudur:
 
 - Kamuya açık 9 aylık programda Month 1 tamamlandı.
-- Month 2'nin stronger evals bölümü ilerledi.
-- Embeddings, gerçek LLM ve deployment henüz tamamlanmadı.
-- Program ilerlemesi bu nedenle yaklaşık %14–15'tir.
+- Month 2'nin dense embeddings ve stronger evals bölümleri ilerledi.
+- Dense/hybrid retrieval ve reranker bileşeni var; gerçek PDF, birleşik rerank pipeline, gerçek LLM ve deployment henüz tamamlanmadı.
+- Program ilerlemesi bu nedenle yaklaşık %15–16'dır.
+- Mentorun ilk hafta programı mevcut yol haritasıyla uyumludur ve Month 2 içinde staj sprinti olarak yürütülecektir.
 - Bilgisayar mühendisliği ve yol haritası öncesi çalışmalar nedeniyle gerçek başlangıç seviyen bundan daha yüksektir.
 
 En büyük risk temel eksikliği değildir. En büyük risk, çok sayıda küçük deney üretip bunları deploy edilmiş, ölçülmüş ve kullanıcı değeri olan bir üründe birleştirememektir.

@@ -27,13 +27,14 @@ Each day follows this structure:
 
 ## Current Progress
 
-### Month 1 — Foundations
+- Pre-roadmap foundation: Python engineering, SQL, EDA, baseline ML, validation, and experiment logging
+- Month 1/9 completed: mini RAG from scratch with chunking, TF-IDF, hybrid retrieval, no-answer detection, and answerability evaluation
+- Month 2/9 in progress: dense embeddings, semantic retrieval, dense/lexical hybrid retrieval, threshold experiments, and cross-encoder reranking
 
-- Shell and Git basics
-- Python engineering
-- Linear algebra basics
-- Pandas, SQL, and EDA
-- Titanic mini ML project
+Current planning documents:
+
+- [Revised 9-month AI Engineering roadmap](docs/ai_engineering_9_aylik_revize_plan_2026.md)
+- [Internship Week 1 program comparison and integration](docs/staj_1_hafta_program_karsilastirmasi.md)
 
 ## Repository Philosophy
 
@@ -149,4 +150,3 @@ Run Week 3 checks:
 ```bash
 ./toolbox/scripts/run_week3_checks.sh
 ```
-
